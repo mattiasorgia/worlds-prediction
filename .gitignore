@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+keys.env
+*.env
+output/
+*.csv
+*.joblib
+models/
