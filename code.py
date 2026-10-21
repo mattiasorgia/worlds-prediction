@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import numpy as np
 
 qualified_teams = [
     # LCK (Korea)
@@ -83,7 +84,6 @@ df_players_storico = df_storico[
 
 
 colonne_utili = [
-    
     'gameid',       
     'date',         
     'league',       
@@ -112,14 +112,13 @@ colonne_utili = [
     'csdiffat15'   
 ]
 
-# Manteniamo solo le colonne utili nei dataset correnti e storici
+
 df_teams_2026 = df_teams_2026[colonne_utili]
 df_players_2026 = df_players_2026[colonne_utili]
 
 df_teams_storico = df_teams_storico[colonne_utili]
 df_players_storico = df_players_storico[colonne_utili]
 
-# Converte la colonna data per facilitare i calcoli temporali (Time-Decay)
 df_teams_2026['date'] = pd.to_datetime(df_teams_2026['date'])
 df_players_2026['date'] = pd.to_datetime(df_players_2026['date'])
 
@@ -204,3 +203,26 @@ power_ranking_ordinato = dict(sorted(power_ranking_worlds.items(), key=lambda it
 print("--- POWER RANKING WORLDS 2026 (Base Elo) ---")
 for posizione, (team, elo) in enumerate(power_ranking_ordinato.items(), 1):
     print(f"{posizione}. {team}: {elo:.1f}")
+
+
+
+
+player_stats = [
+    'league',                     
+    'position',     
+    'playername',
+    'vspm',
+    'wpm', 
+    'wcpm',              
+    'kills', 'deaths', 'assists', 'teamkills'
+    'dpm',          
+    'damageshare',  
+    'earned gpm',   
+    'cspm',         
+    'golddiffat15', 
+    'xpdiffat15',   
+    'csdiffat15'   
+]
+
+df_players_choke = df_players_storico[player_stats].copy()
+df_players_choke['torneo_binario'] = np.where(df_p['league'] == 'WCS', 'Worlds', 'Regular Season')
