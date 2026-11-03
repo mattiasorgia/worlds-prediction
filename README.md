@@ -6,7 +6,7 @@ factor" che misura quanto ogni giocatore rende di più o di meno nei tornei
 internazionali, e infine usati per simulare il torneo 10.000 volte: Swiss stage
 e bracket a eliminazione, con le regole di sorteggio reali.
 
-Nessun machine learning: il progetto è una simulazione Monte Carlo guidata da
+Il progetto è una simulazione Monte Carlo guidata da
 rating Elo. La parte statistica sta nella stima del clutch factor, che confronta
 le statistiche normalizzate di ogni giocatore ai Worlds e in regular season.
 
